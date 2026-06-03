@@ -1,0 +1,227 @@
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-05-29 18:13 IST
+Nmap scan report for 192.168.1.1
+Host is up (0.13s latency).
+
+PORT     STATE  SERVICE
+23/tcp   open   telnet
+80/tcp   open   http
+|_http-title: Wind
+443/tcp  open   https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.1.8
+Host is up (0.25s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   open     http
+443/tcp  filtered https
+5060/tcp filtered sip
+8080/tcp open     http-proxy
+
+Nmap scan report for 192.168.1.12
+Host is up (0.28s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   closed http
+443/tcp  closed https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.1.15
+Host is up (0.34s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   closed http
+443/tcp  closed https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.1.16
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   filtered http
+443/tcp  filtered https
+5060/tcp filtered sip
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.17
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   filtered http
+443/tcp  filtered https
+5060/tcp filtered sip
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.30
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   filtered http
+443/tcp  filtered https
+5060/tcp filtered sip
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.35
+Host is up (0.13s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   open   http
+|_http-title:  Authorization warning
+443/tcp  closed https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.1.66
+Host is up (0.20s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   closed http
+443/tcp  closed https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.1.88
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   filtered http
+443/tcp  filtered https
+5060/tcp filtered sip
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.90
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   open     http
+|_http-title: 403 Forbidden
+443/tcp  closed   https
+5060/tcp filtered sip
+8080/tcp open     http-proxy
+|_http-title: Wallbox
+
+Nmap scan report for 192.168.1.100
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   open     http
+|_http-title: Site doesn't have a title.
+443/tcp  open     https
+|_http-title: Site doesn't have a title.
+5060/tcp filtered sip
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.144
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   filtered http
+443/tcp  filtered https
+5060/tcp filtered sip
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.163
+Host is up (0.13s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   open   http
+|_http-title: Site doesn't have a title (text/html).
+443/tcp  open   https
+|_http-title: Site doesn't have a title (text/html).
+5060/tcp closed sip
+8080/tcp open   http-proxy
+|_http-title: Site doesn't have a title (text/html).
+
+Nmap scan report for 192.168.1.165
+Host is up (0.13s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   open   http
+|_http-title: Site doesn't have a title (text/html; charset=utf-8).
+443/tcp  closed https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.1.186
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   filtered http
+443/tcp  filtered https
+5060/tcp filtered sip
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.189
+Host is up (0.29s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   closed http
+443/tcp  closed https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.1.191
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   open     http
+|_http-title: Site doesn't have a title.
+443/tcp  open     https
+|_http-title: Site doesn't have a title.
+5060/tcp filtered sip
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.192
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   open     http
+|_http-title: Site doesn't have a title.
+443/tcp  open     https
+|_http-title: Site doesn't have a title.
+5060/tcp filtered sip
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.194
+Host is up (0.13s latency).
+
+PORT     STATE    SERVICE
+23/tcp   filtered telnet
+80/tcp   filtered http
+443/tcp  filtered https
+5060/tcp filtered sip
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.199
+Host is up (0.13s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   open   http
+|_http-title:                   192.168.1.199      
+443/tcp  open   https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap done: 256 IP addresses (21 hosts up) scanned in 31.50 seconds

@@ -1,0 +1,14 @@
+   +-----------------+--------+--------------------+-------------------------------------------+
+   |   IP Address    | Status |     Open Ports     |              Device / Title               |
+   +-----------------+--------+--------------------+-------------------------------------------+
+   | 192.168.1.100   |  ALIVE  | 80/tcp, 443/tcp    | Site doesn't have a title.                |
+   | 192.168.1.199   |  ALIVE  | 80/tcp, 443/tcp    | 192.168.1.199                             |
+   | 192.168.1.35    |  ALIVE  | 80/tcp             | Authorization warning                     |
+   | 192.168.1.165   |  ALIVE  | 80/tcp             | Site doesn't have a title (text/html;...  |
+   | 192.168.1.163   |  ALIVE  | 80/tcp, 443/tcp... | Site doesn't have a title (text/html).    |
+   | 192.168.1.192   |  ALIVE  | 80/tcp, 443/tcp    | Site doesn't have a title.                |
+   | 192.168.1.191   |  ALIVE  | 80/tcp, 443/tcp    | Site doesn't have a title.                |
+   | 192.168.1.1     |  ALIVE  | 23/tcp, 80/tcp,... | Wind                                      |
+   | 192.168.1.8     |  ALIVE  | 80/tcp, 8080/tcp   | Unknown Device / No Title                 |
+   | 192.168.1.90    |  ALIVE  | 80/tcp, 8080/tcp   | 403 Forbidden                             |
+   +-----------------+--------+--------------------+-------------------------------------------+

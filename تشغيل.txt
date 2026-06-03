@@ -1,0 +1,77 @@
+
+
+تحميل المكتبات والاعتماديات:
+go mod tidy
+
+فحص الكود وتنسيقه (تلقائياً):
+go fmt ./...
+
+البحث عن الأخطاء البرمجية الثابتة (Linter المبسط):
+go vet ./...
+
+
+تشغيل أداة حاصد النطاقات (Harvester):
+
+go run go/cmd/harvester/main.go
+
+تشغيل أداة الـ VPN (Pptp Warrior):
+go run go/cmd/pptp_warrior/main.go
+
+
+بناء جميع الأدوات في المشروع دفعة واحدة:
+go build ./...
+
+
+بناء أداة الـ Harvester فقط:
+go build -o harvester go/cmd/harvester/main.go
+
+بناء أداة الـ Pptp Warrior فقط:
+go build -o pptp_warrior go/cmd/pptp_warrior/main.go
+
+
+
+تنظيف مخلفات بناء الـ Go (ملفات الكاش والملفات التنفيذية المؤقتة):
+go clean
+
+
+مسح الكاش الخاص بالاختبارات والبناء بالكامل:
+go clean -cache -testcache
+
+
+
+
+
+
+
+
+على أنظمة Linux / Mac:
+rm -rf go/results/*
+
+
+
+
+على نظام Windows (PowerShell):
+
+Remove-Item -Path go/results/* -Recurse -Force
+
+
+
+
+
+
+تشغيل جميع الاختبارات للتأكد من سلامة الوظائف:
+
+go test ./...
+
+
+تشغيل الاختبارات مع إظهار تفاصيل العملية:
+go test -v ./...
+
+
+
+
+
+
+
+
+

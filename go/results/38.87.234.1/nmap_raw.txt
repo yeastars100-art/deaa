@@ -1,0 +1,42 @@
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-05-29 18:13 IST
+Nmap scan report for 192.168.1.10
+Host is up (0.068s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   closed http
+443/tcp  closed https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.1.11
+Host is up (0.071s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   closed http
+443/tcp  closed https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.1.12
+Host is up (0.070s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   closed http
+443/tcp  closed https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.1.52
+Host is up (0.068s latency).
+
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   closed http
+443/tcp  closed https
+5060/tcp closed sip
+8080/tcp closed http-proxy
+
+Nmap done: 256 IP addresses (4 hosts up) scanned in 20.55 seconds
