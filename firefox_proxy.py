@@ -37,7 +37,8 @@ def proxy_config() -> tuple[str, int, str, str]:
 
 
 def authenticated_proxy_url(host: str, port: int, username: str, password: str) -> str:
-    return f"http://{quote(username, safe='')}:{quote(password, safe='')}@{host}:{port}"
+    url_host = f"[{host}]" if ":" in host else host
+    return f"http://{quote(username, safe='')}:{quote(password, safe='')}@{url_host}:{port}"
 
 
 def firefox_options(headless: bool) -> webdriver.FirefoxOptions:
