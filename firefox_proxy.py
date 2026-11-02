@@ -5,7 +5,7 @@ import shutil
 import tempfile
 import zipfile
 from pathlib import Path
-from urllib.parse import quote, urlparse
+from urllib.parse import quote, unquote, urlparse
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -22,7 +22,7 @@ def proxy_config() -> tuple[str, int, str, str]:
         parsed = urlparse(proxy_url)
         if not all((parsed.hostname, parsed.port, parsed.username, parsed.password)):
             raise ValueError("PROXY_URL must include scheme, username, password, host, and port")
-        return parsed.hostname, parsed.port, parsed.username, parsed.password
+        return parsed.hostname, parsed.port, unquote(parsed.username), unquote(parsed.password)
 
     required = ("PROXY_HOST", "PROXY_PORT", "PROXY_USERNAME", "PROXY_PASSWORD")
     missing = [name for name in required if not os.environ.get(name)]
