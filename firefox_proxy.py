@@ -87,6 +87,7 @@ def selenium_wire_driver(options: webdriver.FirefoxOptions, proxy_url: str) -> w
         service=geckodriver_service(),
         options=options,
         seleniumwire_options={
+            "verify_ssl": True,
             "proxy": {
                 "http": proxy_url,
                 "https": proxy_url,
