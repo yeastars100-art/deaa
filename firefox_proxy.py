@@ -4,6 +4,7 @@ import os
 import shutil
 import tempfile
 import zipfile
+from ipaddress import ip_address
 from pathlib import Path
 from urllib.parse import quote, unquote, urlparse
 
@@ -39,6 +40,16 @@ def proxy_config() -> tuple[str, int, str, str]:
 def authenticated_proxy_url(host: str, port: int, username: str, password: str) -> str:
     url_host = f"[{host}]" if ":" in host else host
     return f"http://{quote(username, safe='')}:{quote(password, safe='')}@{url_host}:{port}"
+
+
+def expected_proxy_ip(host: str, configured_ip: str | None) -> str:
+    if configured_ip:
+        return configured_ip
+    try:
+        ip_address(host)
+    except ValueError as error:
+        raise ValueError("Set --expected-ip or PROXY_EXPECTED_IP when the proxy host is a hostname") from error
+    return host
 
 
 def firefox_options(headless: bool) -> webdriver.FirefoxOptions:
@@ -120,7 +131,7 @@ def verify_proxy(driver: webdriver.Firefox, url: str, expected_ip: str, screensh
     print(f"Proxy mode: {mode}")
     print(f"Displayed IP: {displayed_ip}")
     print(f"Screenshot: {Path(screenshot).resolve()}")
-    if displayed_ip != expected_ip:
+    if ip_address(displayed_ip) != ip_address(expected_ip):
         raise RuntimeError(f"Proxy verification failed: expected {expected_ip}, received {displayed_ip}")
     print("Proxy verification succeeded")
     return 0
@@ -136,7 +147,7 @@ def main() -> int:
     args = parser.parse_args()
 
     host, port, username, password = proxy_config()
-    expected_ip = args.expected_ip or host
+    expected_ip = expected_proxy_ip(host, args.expected_ip)
     options = firefox_options(not args.headed)
     proxy_url = authenticated_proxy_url(host, port, username, password)
 
