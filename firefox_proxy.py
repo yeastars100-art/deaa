@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import shutil
 import tempfile
 import zipfile
 from pathlib import Path
@@ -72,11 +73,18 @@ browser.webRequest.onAuthRequired.addListener(
     return addon_path
 
 
+def geckodriver_service() -> Service:
+    installed_driver = shutil.which("geckodriver")
+    if installed_driver:
+        return Service(installed_driver)
+    return Service(GeckoDriverManager().install())
+
+
 def selenium_wire_driver(options: webdriver.FirefoxOptions, proxy_url: str) -> webdriver.Firefox:
     from seleniumwire import webdriver as wire_webdriver
 
     return wire_webdriver.Firefox(
-        service=Service(GeckoDriverManager().install()),
+        service=geckodriver_service(),
         options=options,
         seleniumwire_options={
             "proxy": {
@@ -96,7 +104,7 @@ def addon_driver(
     username: str,
     password: str,
 ) -> webdriver.Firefox:
-    driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()), options=options)
+    driver = webdriver.Firefox(service=geckodriver_service(), options=options)
     addon_path = create_proxy_addon(addon_directory, host, port, username, password)
     driver.install_addon(str(addon_path), temporary=True)
     return driver
