@@ -110,6 +110,20 @@ def addon_driver(
     return driver
 
 
+def verify_proxy(driver: webdriver.Firefox, url: str, expected_ip: str, screenshot: str, mode: str) -> int:
+    driver.set_page_load_timeout(45)
+    driver.get(url)
+    displayed_ip = driver.find_element(By.TAG_NAME, "body").text.strip()
+    driver.save_screenshot(screenshot)
+    print(f"Proxy mode: {mode}")
+    print(f"Displayed IP: {displayed_ip}")
+    print(f"Screenshot: {Path(screenshot).resolve()}")
+    if displayed_ip != expected_ip:
+        raise RuntimeError(f"Proxy verification failed: expected {expected_ip}, received {displayed_ip}")
+    print("Proxy verification succeeded")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verify an authenticated Firefox proxy with ipify")
     parser.add_argument("--url", default=DEFAULT_URL)
@@ -124,33 +138,23 @@ def main() -> int:
     options = firefox_options(not args.headed)
     proxy_url = authenticated_proxy_url(host, port, username, password)
 
-    driver = None
-    mode = "temporary Firefox add-on"
     with tempfile.TemporaryDirectory(prefix="firefox-proxy-") as temp_directory:
         if not args.addon_only:
+            driver = None
             try:
                 driver = selenium_wire_driver(options, proxy_url)
-                mode = "selenium-wire"
+                return verify_proxy(driver, args.url, expected_ip, args.screenshot, "selenium-wire")
             except Exception as error:
                 print(f"selenium-wire unavailable ({type(error).__name__}); using the add-on fallback")
+            finally:
+                if driver is not None:
+                    driver.quit()
 
+        driver = addon_driver(options, Path(temp_directory), host, port, username, password)
         try:
-            if driver is None:
-                driver = addon_driver(options, Path(temp_directory), host, port, username, password)
-            driver.set_page_load_timeout(45)
-            driver.get(args.url)
-            displayed_ip = driver.find_element(By.TAG_NAME, "body").text.strip()
-            driver.save_screenshot(args.screenshot)
-            print(f"Proxy mode: {mode}")
-            print(f"Displayed IP: {displayed_ip}")
-            print(f"Screenshot: {Path(args.screenshot).resolve()}")
-            if displayed_ip != expected_ip:
-                raise RuntimeError(f"Proxy verification failed: expected {expected_ip}, received {displayed_ip}")
-            print("Proxy verification succeeded")
-            return 0
+            return verify_proxy(driver, args.url, expected_ip, args.screenshot, "temporary Firefox add-on")
         finally:
-            if driver is not None:
-                driver.quit()
+            driver.quit()
 
 
 if __name__ == "__main__":
